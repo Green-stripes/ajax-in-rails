@@ -1,0 +1,16 @@
+<div class="container mt-4" data-controller="insert-in-list">
+  <h2><%= @restaurant.name %></h2>
+
+  <p><%= pluralize(@restaurant.reviews.size, "review")  %></p>
+  <div data-insert-in-list-target="items">
+    <% if @restaurant.reviews.blank? %>
+      <p> Be the first to write a review </p>
+    <% else %>
+      <% @restaurant.reviews.each do |review| %>
+        <p><%= review.content %></p>
+      <% end %>
+    <% end %>
+  </div>
+
+  <p><%= render 'reviews/form', restaurant: @restaurant, review: @review %></p>
+</div>
